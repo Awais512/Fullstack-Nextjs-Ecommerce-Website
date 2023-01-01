@@ -5,8 +5,9 @@ import { RiAccountPinCircleLine, RiArrowDropDownFill } from "react-icons/ri";
 import Link from "next/link";
 import { useState } from "react";
 import UserMenu from "./UserMenu";
+import Image from "next/image";
 
-const Top = () => {
+const Top = ({ country }) => {
   const [loggedIn, setLoggedIn] = useState(true);
   const [visible, setVisible] = useState(false);
 
@@ -16,11 +17,8 @@ const Top = () => {
         <div></div>
         <ul className={styles.top__list}>
           <li className={styles.li}>
-            <img
-              src="https://w7.pngwing.com/pngs/72/2/png-transparent-flag-of-pakistan-independence-day-green-flag-school-pakistan-flag-independence-day-desktop-wallpaper.png"
-              alt="Country"
-            />
-            <span>Pakistan / Usd</span>
+            <Image width={2} height={2} src={country.flag} alt="Country" />
+            <span>{country.name} / Usd</span>
           </li>
 
           <li className={styles.li}>
