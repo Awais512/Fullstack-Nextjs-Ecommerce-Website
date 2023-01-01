@@ -1,5 +1,7 @@
+import Copyrights from "./Copyrights";
 import Links from "./Links";
 import NewsLetter from "./NewsLetter";
+import Payment from "./Payment";
 import Socials from "./Socials";
 import styles from "./styles.module.scss";
 
@@ -10,6 +12,8 @@ const Footer = () => {
         <Links />
         <Socials />
         <NewsLetter />
+        <Payment />
+        <Copyrights />
       </div>
     </footer>
   );
