@@ -28,7 +28,7 @@
     &__list{
         display: flex;
         gap: 15px;
-        li{
+        .li{
             position: relative;
             display: flex;
             align-items: center;
@@ -111,5 +111,33 @@
         gap: 10px !important;
         width: 100%;
         padding: 0 1rem;
+    }
+    ul{
+        li{
+            height: 30px;
+            a{
+                width: 100%;
+                padding-left: 1rem !important;
+            }
+            &:hover{
+                background: #eeeeeebe;
+            }
+        }
+    }
+
+    &__img{
+        width: 100px !important;
+        height: 100px !important;
+    }
+    .col{
+        display: flex;
+        flex-direction: column;
+        span{
+            &:last-of-type{
+                font-size: 14px;
+                color:$blue-color;
+                text-decoration: underline;
+            }
+        }
     }
 }

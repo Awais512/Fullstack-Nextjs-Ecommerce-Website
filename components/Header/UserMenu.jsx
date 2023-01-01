@@ -15,7 +15,7 @@ const UserMenu = ({ loggedIn }) => {
           <div className={styles.col}>
             <span>Welcome Back.</span>
             <h3>Awais512</h3>
-            <span>Signout</span>
+            <span>Sign Out</span>
           </div>
         </div>
       ) : (
