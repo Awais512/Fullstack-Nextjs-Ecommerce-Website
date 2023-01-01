@@ -1,0 +1,13 @@
+@import '../../styles/base.scss';
+.header {
+    height: 100%;
+}
+
+.ad {
+    height: 54px;
+    width: 100%;
+    background-image: url('../../public/images/ad.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
