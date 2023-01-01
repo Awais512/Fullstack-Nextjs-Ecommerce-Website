@@ -141,3 +141,86 @@
         }
     }
 }
+
+.main{
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+
+    &__container{
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+    }
+    .logo{
+        img{
+            width: 170px;
+            height: 40px;
+            margin-top: 10px;
+        }
+    }
+    .search{
+        display: flex;
+        align-items: center;
+        flex: 1;
+        background: #eeeeeebc;
+        height: 40px;
+        border-radius: 5px;
+        input{
+            width: 100%;
+            border: none;
+            outline: none;
+            height: 100%;
+            background: transparent;
+            padding-left: 1rem;
+        }
+        &__icon{
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            background: $blue-color;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            svg{
+                width: 21px;
+                height: 21px;
+                fill: #fff;
+            }
+        }
+
+    }
+}
+
+.cart {
+    position: relative;
+    svg{
+        width: 35px;
+        height: 35px;
+        fill:#666;
+        cursor: pointer;
+        &:hover{
+            fill:$blue-color;
+        }
+    }
+    span{
+        position: absolute;
+        top:-5px;
+        right: -5px;
+        background: $blue-color;
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 600;
+        color:#fff;
+    }
+}
