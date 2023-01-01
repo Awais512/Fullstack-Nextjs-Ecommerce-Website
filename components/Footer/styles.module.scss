@@ -6,12 +6,31 @@
         position: relative;
         width: 100%;
         display: grid;
+        grid-template-areas: 
+        "links"
+        "socials"
+        "newsletter"
+        "payment"
+        "copyright"
+        ;
         gap: 3rem;
         padding: 1rem;
+        @media (min-width:800px){
+            grid-template-areas: 
+            "links socials"
+            "links newsletter"
+            "copyright payment"
+            ;
+        }
+        @media (min-width:1200px){
+            max-width: 1200px;
+            margin: 0 auto;
+        }
     }
     img{
         width: 140px;
         height: 40px;
+        object-fit: contain;
     }
     h3{
         font-size: 12px;
@@ -19,6 +38,7 @@
         color:#222;
     }
     &__links{
+        grid-area: links;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
@@ -40,6 +60,7 @@
         }
     }
     &__socials{
+        grid-area: socials;
         section{
             ul{
                 margin-top: 10px;
@@ -61,6 +82,7 @@
         margin-top: 10px;
     }
     &__newsletter{
+        grid-area: newsletter;
         input{
             flex: 1;
             height: 40px;
@@ -83,7 +105,7 @@
         }
     }
     &__payment{
-
+        grid-area: payment;
     }
     &__flexwrap{
         display: flex;
@@ -96,6 +118,7 @@
         }
     }
     &__copyright{
+        grid-area: copyright;
         section{
             font-size: 12px;
             color: #666;
