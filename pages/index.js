@@ -3,11 +3,15 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
 import UK from "../public/images/uk.png";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home({ country }) {
+  const { data: session } = useSession();
+
   return (
     <div className={styles.container}>
       <Header country={country} />
+      {session ? "You are Logged in" : "Not LoggedIn"}
       <Footer country={country} />
     </div>
   );
