@@ -27,3 +27,9 @@ $shadow-1: rgba(99,99,99,.2) 0px 2px 8px 0px;
     width: 100%;
     border-radius: 2px;
 }
+
+.flex{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

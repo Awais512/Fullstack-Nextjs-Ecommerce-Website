@@ -13,11 +13,19 @@
         width: 140px;
         height: 40px;
     }
+    h3{
+        font-size: 12px;
+        font-weight: 700;
+        color:#222;
+    }
     &__links{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
         ul{
+            b{
+                text-transform: uppercase;
+            }
             padding: 5px;
             li {
                 font-size: 12px;
@@ -28,6 +36,49 @@
                         text-decoration: underline;
                     }
                 }
+            }
+        }
+    }
+    &__socials{
+        section{
+            ul{
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                li{
+                    font-size: 2rem;
+                    color:#666;
+                    &:hover{
+                        color: $blue-color;
+                    }
+                }
+            }
+        }
+    }
+    &__flex{
+        display: flex;
+        margin-top: 10px;
+    }
+    &__newsletter{
+        input{
+            flex: 1;
+            height: 40px;
+            outline: none;
+            border: 1px solid #999;
+            font-size: 14px;
+            padding-left: 10px;
+        }
+        button{
+            width: 150px;
+        }
+        p{
+            margin-top: 10px;
+            font-size: 10px;
+            color: #666;
+            a{
+                color: $blue-color;
+                text-decoration: underline;
             }
         }
     }
