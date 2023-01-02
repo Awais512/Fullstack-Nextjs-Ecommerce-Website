@@ -5,7 +5,13 @@ import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "./lib/mongodb";
-import { GITHUB_ID, GITHUB_SECRET, JWT_SECRET } from "../../../constants";
+import {
+  GITHUB_ID,
+  GITHUB_SECRET,
+  GOOGLE_ID,
+  GOOGLE_SECRET,
+  JWT_SECRET,
+} from "../../../constants";
 
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
@@ -20,8 +26,8 @@ export default NextAuth({
       clientSecret: process.env.FACEBOOK_SECRET,
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: GOOGLE_ID,
+      clientSecret: GOOGLE_SECRET,
     }),
     GitHubProvider({
       clientId: GITHUB_ID,
