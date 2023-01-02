@@ -2,8 +2,10 @@ import NextAuth from "next-auth";
 import AppleProvider from "next-auth/providers/apple";
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "./lib/mongodb";
+import { GITHUB_ID, GITHUB_SECRET, JWT_SECRET } from "../../../constants";
 
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
@@ -21,12 +23,16 @@ export default NextAuth({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
+    GitHubProvider({
+      clientId: GITHUB_ID,
+      clientSecret: GITHUB_SECRET,
+    }),
   ],
   pages: {
-    signIn: "/signin",
+    //signIn: "/signin",
   },
   session: {
     strategy: "jwt",
   },
-  secret: process.env.JWT_SECRET,
+  secret: JWT_SECRET,
 });

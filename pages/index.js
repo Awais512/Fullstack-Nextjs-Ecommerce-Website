@@ -8,10 +8,12 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function Home({ country }) {
   const { data: session } = useSession();
 
+  console.log(session);
+
   return (
     <div className={styles.container}>
       <Header country={country} />
-      {session ? "You are Logged in" : "Not LoggedIn"}
+
       <Footer country={country} />
     </div>
   );
