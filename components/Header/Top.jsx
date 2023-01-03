@@ -7,6 +7,7 @@ import { useState } from "react";
 import UserMenu from "./UserMenu";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import UK from "../../public/images/uk.png";
 
 const Top = ({ country }) => {
   const [visible, setVisible] = useState(false);
@@ -18,8 +19,8 @@ const Top = ({ country }) => {
         <div></div>
         <ul className={styles.top__list}>
           <li className={styles.li}>
-            <Image width={2} height={2} src={country.flag} alt="Country" />
-            <span>{country.name} / Usd</span>
+            <Image width={2} height={2} src={UK} alt="Country" />
+            <span>United Kingdom / Usd</span>
           </li>
 
           <li className={styles.li}>
