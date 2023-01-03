@@ -3,6 +3,7 @@ import TwitterProvider from "next-auth/providers/twitter";
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import Auth0Provider from "next-auth/providers/auth0";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "./lib/mongodb";
 import {
@@ -15,6 +16,9 @@ import {
   TWITTER_SECRET,
   FACEBOOK_ID,
   FACEBOOK_SECRET,
+  AUTH0_CLIENT_ID,
+  AUTH0_CLIENT_SECRET,
+  AUTH0_ISSUER,
 } from "../../../constants";
 
 export default NextAuth({
@@ -29,13 +33,19 @@ export default NextAuth({
       clientId: FACEBOOK_ID,
       clientSecret: FACEBOOK_SECRET,
     }),
+    GitHubProvider({
+      clientId: GITHUB_ID,
+      clientSecret: GITHUB_SECRET,
+    }),
     GoogleProvider({
       clientId: GOOGLE_ID,
       clientSecret: GOOGLE_SECRET,
     }),
-    GitHubProvider({
-      clientId: GITHUB_ID,
-      clientSecret: GITHUB_SECRET,
+
+    Auth0Provider({
+      clientId: AUTH0_CLIENT_ID,
+      clientSecret: AUTH0_CLIENT_SECRET,
+      issuer: AUTH0_ISSUER,
     }),
   ],
   pages: {
