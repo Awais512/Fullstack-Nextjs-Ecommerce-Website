@@ -25,6 +25,10 @@ export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     // OAuth authentication providers...
+    GitHubProvider({
+      clientId: GITHUB_ID,
+      clientSecret: GITHUB_SECRET,
+    }),
     TwitterProvider({
       clientId: TWITTER_ID,
       clientSecret: TWITTER_SECRET,
@@ -33,10 +37,7 @@ export default NextAuth({
       clientId: FACEBOOK_ID,
       clientSecret: FACEBOOK_SECRET,
     }),
-    GitHubProvider({
-      clientId: GITHUB_ID,
-      clientSecret: GITHUB_SECRET,
-    }),
+
     GoogleProvider({
       clientId: GOOGLE_ID,
       clientSecret: GOOGLE_SECRET,

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
+import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styles from "../styles/signin.module.scss";
@@ -9,13 +10,20 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import LoginInput from "../components/Inputs/LoginInput";
 import CircledIconBtn from "../components/Buttons/CircledIconBtn";
+import { getProviders, signIn } from "next-auth/react";
+import facebook from "../public/images/facebook.png";
+import google from "../public/images/google.png";
+import auth0 from "../public/images/auth0.png";
+import github from "../public/images/github.png";
+import twitter from "../public/images/twitter (legacy).png";
 
 const initialValues = {
   login_email: "",
   login_password: "",
 };
 
-const Signin = () => {
+const Signin = ({ providers }) => {
+  console.log(providers);
   const [user, setUser] = useState(initialValues);
 
   const { login_email, login_password } = user;
@@ -78,6 +86,22 @@ const Signin = () => {
                 </Form>
               )}
             </Formik>
+            <div className={styles.login__socials}>
+              <span className={styles.or}>Or continue with</span>
+              <div className={styles.login__socials_wrap}>
+                {providers.map((provider, i) => (
+                  <div key={provider.name}>
+                    <button
+                      className={styles.social__btn}
+                      onClick={() => signIn(provider.id)}
+                    >
+                      <img src={`../images/${provider.name}.png`} alt="" />
+                      Sign in with {provider.name}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -85,5 +109,14 @@ const Signin = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const providers = Object.values(await getProviders());
+  return {
+    props: {
+      providers,
+    },
+  };
+}
 
 export default Signin;
