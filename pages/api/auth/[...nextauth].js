@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import AppleProvider from "next-auth/providers/apple";
+import TwitterProvider from "next-auth/providers/twitter";
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
@@ -11,19 +11,23 @@ import {
   GOOGLE_ID,
   GOOGLE_SECRET,
   JWT_SECRET,
+  TWITTER_ID,
+  TWITTER_SECRET,
+  FACEBOOK_ID,
+  FACEBOOK_SECRET,
 } from "../../../constants";
 
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     // OAuth authentication providers...
-    AppleProvider({
-      clientId: process.env.APPLE_ID,
-      clientSecret: process.env.APPLE_SECRET,
+    TwitterProvider({
+      clientId: TWITTER_ID,
+      clientSecret: TWITTER_SECRET,
     }),
     FacebookProvider({
-      clientId: process.env.FACEBOOK_ID,
-      clientSecret: process.env.FACEBOOK_SECRET,
+      clientId: FACEBOOK_ID,
+      clientSecret: FACEBOOK_SECRET,
     }),
     GoogleProvider({
       clientId: GOOGLE_ID,
