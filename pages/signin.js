@@ -26,7 +26,7 @@ const Signin = ({ providers }) => {
   const {
     login_email,
     login_password,
-    full_name,
+    name,
     email,
     password,
     confirm_password,
@@ -45,7 +45,7 @@ const Signin = ({ providers }) => {
   });
 
   const registerValidation = Yup.object({
-    full_name: Yup.string()
+    name: Yup.string()
       .required("What's is your name?")
       .min(2, "First name must be 2 and 16 characters")
       .max(16, "First name must be 2 and 16 characters")
@@ -137,13 +137,13 @@ const Signin = ({ providers }) => {
             <Formik
               enableReinitialize
               validationSchema={registerValidation}
-              initialValues={{ email, full_name, password, confirm_password }}
+              initialValues={{ email, name, password, confirm_password }}
             >
               {(form) => (
                 <Form>
                   <LoginInput
                     type="text"
-                    name="full_name"
+                    name="name"
                     icon="user"
                     placeholder="Full Name"
                     onChange={handleChange}

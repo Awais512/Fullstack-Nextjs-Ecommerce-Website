@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    full_name: {
+    name: {
       type: String,
       required: "Please Enter your full name",
     },
