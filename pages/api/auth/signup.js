@@ -4,6 +4,7 @@ import User from "../../../models/User";
 import { connectDB } from "../../../utils/db";
 import { validateEmail } from "../../../utils/validation";
 import { createActivationToken } from "../../../utils/tokens";
+import { BASE_URL } from "../../../constants";
 
 const handler = nc();
 
@@ -35,7 +36,8 @@ handler.post(async (req, res) => {
     const activation_token = createActivationToken({
       id: user._id.toString(),
     });
-    res.send(activation_token);
+    const url = `${BASE_URL}/activate/${activation_token}`;
+    res.send(url);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
