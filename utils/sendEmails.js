@@ -6,6 +6,7 @@ import {
   MAILING_SERVICE_REFRESH_TOKEN,
   SENDER_EMAIL_ADDRESS,
 } from "../constants";
+import { activateEmailTemplate } from "../components/Emails/activateEmailTemplate";
 
 const { OAuth2 } = google.auth;
 
@@ -38,7 +39,7 @@ export const sendEmail = (to, url, txt, subject) => {
     from: SENDER_EMAIL_ADDRESS,
     to: to,
     subject: subject,
-    html: "",
+    html: activateEmailTemplate(to, url),
   };
   smtpTransport.sendMail(mailOptions, (err, infos) => {
     if (err) return err;

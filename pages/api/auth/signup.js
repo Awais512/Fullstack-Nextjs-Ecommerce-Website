@@ -5,6 +5,7 @@ import { connectDB } from "../../../utils/db";
 import { validateEmail } from "../../../utils/validation";
 import { createActivationToken } from "../../../utils/tokens";
 import { BASE_URL } from "../../../constants";
+import { sendEmail } from "../../../utils/sendEmails";
 
 const handler = nc();
 
@@ -37,7 +38,7 @@ handler.post(async (req, res) => {
       id: user._id.toString(),
     });
     const url = `${BASE_URL}/activate/${activation_token}`;
-    res.send(url);
+    sendEmail(email, url, "", "Activate Your Account");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
