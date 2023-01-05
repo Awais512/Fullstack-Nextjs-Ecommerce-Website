@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
+import Router from "next/router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styles from "../styles/signin.module.scss";
@@ -11,6 +12,7 @@ import LoginInput from "../components/Inputs/LoginInput";
 import CircledIconBtn from "../components/Buttons/CircledIconBtn";
 import { getProviders, signIn } from "next-auth/react";
 import axios from "axios";
+import DotLoader from "../components/Loaders/DotLoader";
 
 const initialValues = {
   login_email: "",
@@ -81,6 +83,10 @@ const Signin = ({ providers }) => {
         password,
       });
       setUser({ ...user, error: "", success: data.message });
+      setLoading(false);
+      setTimeout(() => {
+        Router.push("/");
+      }, 2000);
     } catch (error) {
       setLoading(false);
       setUser({ ...user, success: "", error: error.response.data.message });
@@ -90,6 +96,7 @@ const Signin = ({ providers }) => {
 
   return (
     <>
+      {loading && <DotLoader loading={loading} />}
       <Header />
       <div className={styles.login}>
         <div className={styles.login__container}>
@@ -196,8 +203,8 @@ const Signin = ({ providers }) => {
               )}
             </Formik>
             <div>
-              {success && <span>{success}</span>}
-              {error && <span>{error}</span>}
+              {success && <span className={styles.success}>{success}</span>}
+              {error && <span className={styles.error}>{error}</span>}
             </div>
           </div>
         </div>

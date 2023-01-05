@@ -128,3 +128,13 @@
     background: transparent;
     border: 1px solid #66666683
 }
+
+.error{
+    padding: 10px;
+    color: $error-color;
+}
+
+.success{
+    padding: 10px;
+    color: $success-color;
+}
