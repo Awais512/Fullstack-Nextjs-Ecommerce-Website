@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import LoginInput from "../components/Inputs/LoginInput";
 import CircledIconBtn from "../components/Buttons/CircledIconBtn";
 import { getProviders, signIn } from "next-auth/react";
+import axios from "axios";
 
 const initialValues = {
   login_email: "",
@@ -18,9 +19,12 @@ const initialValues = {
   email: "",
   password: "",
   confirm_password: "",
+  success: "",
+  error: "",
 };
 
 const Signin = ({ providers }) => {
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(initialValues);
 
   const {
@@ -30,6 +34,8 @@ const Signin = ({ providers }) => {
     email,
     password,
     confirm_password,
+    success,
+    error,
   } = user;
 
   const handleChange = (e) => {
@@ -66,7 +72,21 @@ const Signin = ({ providers }) => {
       .oneOf([Yup.ref("password")], "Password must match"),
   });
 
-  console.log(user);
+  const signUp = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/auth/signup", {
+        name,
+        email,
+        password,
+      });
+      setUser({ ...user, error: "", success: data.message });
+    } catch (error) {
+      setLoading(false);
+      setUser({ ...user, success: "", error: error.response.data.message });
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -138,6 +158,7 @@ const Signin = ({ providers }) => {
               enableReinitialize
               validationSchema={registerValidation}
               initialValues={{ email, name, password, confirm_password }}
+              onSubmit={() => signUp()}
             >
               {(form) => (
                 <Form>
@@ -174,6 +195,10 @@ const Signin = ({ providers }) => {
                 </Form>
               )}
             </Formik>
+            <div>
+              {success && <span>{success}</span>}
+              {error && <span>{error}</span>}
+            </div>
           </div>
         </div>
       </div>

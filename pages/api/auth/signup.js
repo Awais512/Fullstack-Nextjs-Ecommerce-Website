@@ -1,7 +1,7 @@
 import nc from "next-connect";
 import bcrypt from "bcrypt";
 import User from "../../../models/User";
-import { connectDB } from "../../../utils/db";
+import { connectDB, disconnectDB } from "../../../utils/db";
 import { validateEmail } from "../../../utils/validation";
 import { createActivationToken } from "../../../utils/tokens";
 import { BASE_URL } from "../../../constants";
@@ -39,6 +39,10 @@ handler.post(async (req, res) => {
     });
     const url = `${BASE_URL}/activate/${activation_token}`;
     sendEmail(email, url, "", "Activate Your Account");
+    await disconnectDB();
+    res.json({
+      message: "Register Success! Please Activate Your Account to start...",
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
