@@ -25,6 +25,7 @@ const Forgot = () => {
       setError("");
       setSuccess(data.message);
       setLoading(false);
+      setEmail("");
     } catch (error) {
       setLoading(false);
       setSuccess("");
@@ -70,8 +71,10 @@ const Forgot = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <CircledIconBtn type="submit" text="Send Link" />
-                {error && <span className={styles.error}>{error}</span>}
-                {success && <span className={styles.success}>{success}</span>}
+                <div style={{ marginTop: "10px" }}>
+                  {error && <span className={styles.error}>{error}</span>}
+                  {success && <span className={styles.success}>{success}</span>}
+                </div>
               </Form>
             )}
           </Formik>

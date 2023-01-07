@@ -11,21 +11,6 @@ const Main = () => {
 
   return (
     <div className={styles.main}>
-      {/* <div className={styles.main__container}>
-        <Link href="/" className={styles.logo}>
-          <Image src={Logo} alt="Shoppay" />
-        </Link>
-        <div className={styles.search}>
-          <input type="text" placeholder="Search..." />
-          <div className={styles.search__icon}>
-            <RiSearch2Line />
-          </div>
-        </div>
-        <Link href="/cart" className={styles.cart}>
-          <FaOpencart />
-          <span style={{ color: "black" }}>{cart.length}</span>
-        </Link>
-      </div> */}
       <div className={styles.main__container}>
         <Link href="/" legacyBehavior>
           <a className={styles.logo}>
