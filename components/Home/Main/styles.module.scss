@@ -1,0 +1,47 @@
+@import '../../../styles/base.scss';
+
+.main{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+    "menu header header"
+    "menu swiper users"
+    "menu offers users";
+
+    .menu{
+        grid-area: menu;
+        height: 560px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+    .header{
+        grid-area: header;
+        height: 40px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+    .swiper{
+        grid-area: swiper;
+        height: 300px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+    .offers{
+        grid-area: offers;
+        height: 200px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+    .users{
+        grid-area: users;
+        height: 508px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+    }
+}

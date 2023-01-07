@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import UK from "../public/images/uk.png";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Main from "../components/Home/Main";
+import FlashDeals from "../components/Home/FlashDeals";
 
 export default function Home({ country }) {
   const { data: session } = useSession();
@@ -11,11 +13,16 @@ export default function Home({ country }) {
   console.log(session);
 
   return (
-    <div className={styles.container}>
+    <>
       <Header country={country} />
-
+      <div className={styles.home}>
+        <div className={styles.container}>
+          <Main />
+          {/* <FlashDeals /> */}
+        </div>
+      </div>
       <Footer country={country} />
-    </div>
+    </>
   );
 }
 
