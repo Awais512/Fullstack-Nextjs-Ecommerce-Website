@@ -9,6 +9,8 @@ import LoginInput from "../../components/Inputs/LoginInput";
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
+import axios from "axios";
+import DotLoader from "../../components/Loaders/DotLoader";
 
 const Forgot = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +18,19 @@ const Forgot = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const forgotHandler = () => {};
+  const forgotHandler = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/auth/forgot", { email });
+      setError("");
+      setSuccess(data.message);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setSuccess("");
+      setError(error.response.data.message);
+    }
+  };
   const emailValidation = Yup.object({
     email: Yup.string()
       .required(
@@ -27,6 +41,7 @@ const Forgot = () => {
 
   return (
     <>
+      {loading && <DotLoader loading={loading} />}
       <Header />
       <div className={styles.forgot}>
         <div>
@@ -54,8 +69,9 @@ const Forgot = () => {
                   placeholder="Enter Your Email Address"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <CircledIconBtn type="submit" text="Sign in" />
+                <CircledIconBtn type="submit" text="Send Link" />
                 {error && <span className={styles.error}>{error}</span>}
+                {success && <span className={styles.success}>{success}</span>}
               </Form>
             )}
           </Formik>

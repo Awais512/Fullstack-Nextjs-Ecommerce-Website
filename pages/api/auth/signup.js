@@ -6,6 +6,7 @@ import { validateEmail } from "../../../utils/validation";
 import { createActivationToken } from "../../../utils/tokens";
 import { BASE_URL } from "../../../constants";
 import { sendEmail } from "../../../utils/sendEmails";
+import { activateEmailTemplate } from "../../../components/Emails/activateEmailTemplate";
 
 const handler = nc();
 
@@ -38,7 +39,7 @@ handler.post(async (req, res) => {
       id: user._id.toString(),
     });
     const url = `${BASE_URL}/activate/${activation_token}`;
-    sendEmail(email, url, "", "Activate Your Account");
+    sendEmail(email, url, "", "Activate Your Account", activateEmailTemplate);
     await disconnectDB();
     res.json({
       message: "Register Success! Please Activate Your Account to start...",
