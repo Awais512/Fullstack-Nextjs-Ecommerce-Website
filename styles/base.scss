@@ -81,9 +81,20 @@ $shadow-1: rgba(99,99,99,.2) 0px 2px 8px 0px;
   .swiper {
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
+    &:hover{
+      .swiper-button-prev,.swiper-button-next{
+        display: grid;
+      }
+    }
   }
 
   .mainSwiper{
+    .swiper{
+      border-radius: 10px !important;
+      overflow: hidden !important;
+    }
+    
     .swiper-slide img{
         height: 300px !important;
         border-radius: 10px !important;
@@ -104,6 +115,8 @@ $shadow-1: rgba(99,99,99,.2) 0px 2px 8px 0px;
         height: 80px !important;
         transition: 0.2s;
         background: rgba(102, 102, 102,0.354) !important;
+        display: none;
+        place-items: center;
     }
     .swiper-button-prev{
         left: -13px;
