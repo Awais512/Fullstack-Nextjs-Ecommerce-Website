@@ -188,7 +188,7 @@ const Signin = ({ providers, callbackUrl, csrfToken }) => {
                         className={styles.social__btn}
                         onClick={() => signIn(provider.id)}
                       >
-                        <img src={`../images/${provider.name}.png`} alt="" />
+                        <img src={`../icons/${provider.name}.png`} alt="" />
                         Sign in with {provider.name}
                       </button>
                     </div>

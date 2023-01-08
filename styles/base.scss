@@ -3,7 +3,19 @@ $gray-color: #f8f8f8;
 $light-error-color: #fd010169;
 $error-color: #ed4337;
 $success-color: #6cc070;
-$shadow-1: rgba(99,99,99,.2) 0px 2px 8px 0px;
+$blue-color: #2f82ff;
+$dark-blue-color: #1a28f1dc;
+$yellow-color: #fac80f;
+$violet-color: #5a31f4;
+$green-color: #3c811f;
+$redish-color: #f15f6f;
+$light-error-color: #fd010169;
+$error-color: #ed4337;
+$error-secondary-color: #f02f2fd8;
+$success-color: #6cc070;
+$shadow-1: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+$shadow-2: rgba(99, 99, 99, 0.1) 0px 0px 4px 0px;
+$cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 
 .container{
@@ -89,7 +101,7 @@ $shadow-1: rgba(99,99,99,.2) 0px 2px 8px 0px;
     }
   }
 
-  .mainSwiper{
+  .mainSwiper,.offers_swiper{
     .swiper{
       border-radius: 10px !important;
       overflow: hidden !important;
@@ -123,5 +135,82 @@ $shadow-1: rgba(99,99,99,.2) 0px 2px 8px 0px;
     }
     .swiper-button-next{
         right: -13px;
+    }
+  }
+
+  .offers_swiper{
+   max-width: 550px;
+   transform: translateX(18%);
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+    
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      width: 150px !important;
+      border-radius: 10px !important;
+      height: 90%;
+      margin-top: 0.6rem;
+      box-shadow: $shadow-1;
+      &:hover{
+        transform: scale(1.03);
+        transition: 0.2s;
+      }
+      span{
+        position: absolute;
+        color:#fff;
+        &:first-of-type{
+          bottom: 10px;
+          width: 90px;
+          height: 25px;
+          border-radius: 50px;
+          font-size: 16;
+          font-weight: 600;
+          background: $yellow-color;
+        }
+        &:last-of-type{
+          font-style: italic;
+          top: -5px;
+          right: -5px;
+          background: $redish-color;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          font-size: 16px;
+          font-weight: 600;
+          box-shadow: $shadow-1;
+        }
+      }
+    }
+    
+    .swiper-slide img {
+      position: absolute;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+    .swiper-pagination{
+      display: none;
     }
   }

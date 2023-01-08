@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
-import Paypal from "../../public/images/payp.png";
-import Visa from "../../public/images/visa.png";
-import Master from "../../public/images/master.png";
+import Paypal from "../../public/images/payment/paypal.webp";
+import Visa from "../../public/images/payment/visa.webp";
+import Master from "../../public/images/payment/mastercard.webp";
 import Image from "next/image";
 
 const Payment = () => {

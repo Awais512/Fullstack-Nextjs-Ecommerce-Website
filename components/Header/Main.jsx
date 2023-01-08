@@ -4,7 +4,6 @@ import { RiSearch2Line } from "react-icons/ri";
 import { FaOpencart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import Logo from "../../public/images/logo1.png";
 
 const Main = () => {
   const { cart } = useSelector((state) => ({ ...state }));
@@ -14,7 +13,7 @@ const Main = () => {
       <div className={styles.main__container}>
         <Link href="/" legacyBehavior>
           <a className={styles.logo}>
-            <Image src={Logo} alt="" />
+            <img src="../../images/logo.png" alt="" />
           </a>
         </Link>
         <div className={styles.search}>

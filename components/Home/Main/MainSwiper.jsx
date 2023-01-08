@@ -1,12 +1,8 @@
-import { useRef, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper";
 
@@ -30,7 +26,7 @@ export default function MainSwiper() {
       >
         {[...Array(8).keys()].map((i) => (
           <SwiperSlide key={i}>
-            <img src={`../../../images/${i + 1}.png`} alt="" />
+            <img src={`../../../images/swiper/${i + 1}.jpg`} alt="" />
           </SwiperSlide>
         ))}
       </Swiper>

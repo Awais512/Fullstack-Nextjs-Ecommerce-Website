@@ -1,47 +1,292 @@
 @import '../../../styles/base.scss';
 
-.main{
+.main {
     display: grid;
-    gap: 10px;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: 
-    "menu header header"
-    "menu swiper users"
-    "menu offers users";
-
-    .menu{
-        grid-area: menu;
-        height: 560px;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: $shadow-1;
+    gap: 10px;
+    grid-template-areas:
+      "menu header header"
+      "menu swiper user"
+      "menu offers user";
+    @media (max-width: 1232px) {
+      grid-template-columns: 1fr 3fr;
     }
-    .header{
-        grid-area: header;
-        height: 40px;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: $shadow-1;
+    @media (max-width: 990px) {
+      grid-template-columns: 80px 3fr;
     }
-    .swiper{
-        grid-area: swiper;
-        height: 300px;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: $shadow-1;
+    @media (max-width: 730px) {
+      grid-template-areas:
+        "menu"
+        "swiper"
+        "offers";
+      grid-template-columns: 1fr;
+      .menu {
+        width: 100% !important;
+        height: fit-content !important;
+        &__list {
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: wrap;
+          justify-content: center;
+          li {
+            transform: translateY(-25px);
+          }
+        }
+      }
     }
-    .offers{
-        grid-area: offers;
-        height: 200px;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: $shadow-1;
+    .menu {
+      grid-area: menu;
+      height: 580px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: $shadow-1;
+      @media (max-width: 990px) {
+        width: 80px;
+        svg {
+          transform: scale(1.5);
+        }
+        &__list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
+      &__header {
+        width: 100%;
+        height: 35px;
+        background: $gray-color;
+        border-bottom: 1px solid $gray-color;
+        box-shadow: $shadow-2;
+        @media (max-width: 990px) {
+          display: none !important;
+          svg,
+          b {
+            display: none;
+          }
+        }
+        svg {
+          height: 23px;
+          width: 23px;
+        }
+      }
+      &__list {
+        margin-top: 3px;
+      }
+      ul {
+        li {
+          height: 32px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            background: $gray-color;
+          }
+  
+          a {
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #424141;
+            svg {
+              fill: #8c8484;
+              stroke: #8c8484;
+            }
+            span {
+              @media (max-width: 990px) {
+                display: none;
+              }
+            }
+          }
+        }
+      }
     }
-    .users{
-        grid-area: users;
-        height: 508px;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: $shadow-1;
+    .header {
+      grid-area: header;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      @media (max-width: 730px) {
+        display: none !important;
+      }
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        li {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          font-size: 19px;
+          color: $blue-color;
+        }
+      }
     }
-}
+    .swiper {
+      grid-area: swiper;
+      height: 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: $shadow-1;
+    }
+    .offers {
+      position: relative;
+      grid-area: offers;
+      overflow: hidden;
+      height: 220px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: $shadow-1;
+      background-image: url("../../../public/images/flash.webp");
+      background-image: url("https://img.lovepik.com/background/20211021/large/lovepik-e-commerce-banner-background-image_500366534.jpg");
+      background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190220/ourmid/pngtree-contrast-color-wave-point-geometric-banner-image_9983.jpg");
+      background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20190221/ourmid/pngtree-color-horn-polygon-pop-wind-image_16349.jpg");
+      // background-image: url('../../../public/images/flash.webp');
+      //background-position: -275px -135px;
+      background-size: cover;
+      &__text {
+        max-width: 200px;
+        position: absolute;
+        top: 1.3rem;
+        left: 2rem;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.418);
+        padding: 1rem;
+        color: $blue-color;
+        text-align: center;
+        b {
+        }
+        a {
+          margin-top: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $blue-color;
+          height: 40px;
+          font-weight: 600;
+          font-size: 1rem;
+          color: #fff;
+          border: 1px solid #fff;
+          animation: all 0.2s ease-in-out;
+          border-color: #fff;
+          &:hover {
+            transform: scale(1.05);
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .users {
+      position: relative;
+      grid-area: user;
+      height: 530px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: $shadow-1;
+      @media (max-width: 1232px) {
+        display: none;
+      }
+      &__header {
+      }
+      &__container {
+        padding: 1rem;
+      }
+      &__infos {
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 50%;
+          box-shadow: $shadow-1;
+        }
+        h4 {
+          margin-top: 10px;
+          text-transform: capitalize;
+        }
+        &_btns {
+          margin-top: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          button {
+            width: 100px;
+            height: 35px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            &:first-of-type {
+              background: linear-gradient($blue-color, #0000ff34);
+              color: #fff;
+            }
+            &:last-of-type {
+              color: #555;
+            }
+          }
+        }
+      }
+      &__links {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        li {
+          width: 50px;
+          height: 50px;
+          background: $gray-color;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          transition: 0.2s;
+          svg {
+            width: 30px;
+            height: 30px;
+            stroke: $blue-color;
+          }
+          &:hover {
+            background: $blue-color;
+            svg {
+              stroke: #fff;
+            }
+          }
+          &:nth-of-type(3),
+          &:nth-of-type(4) {
+            svg {
+              fill: $blue-color;
+            }
+            &:hover {
+              svg {
+                fill: #fff;
+              }
+            }
+          }
+        }
+      }
+      &__footer {
+        position: absolute;
+        bottom: 0;
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .new {
+    position: absolute;
+    top: -8px;
+    left: -9px;
+    width: 80px;
+    z-index: 99;
+  }
+  
