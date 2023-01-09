@@ -181,19 +181,14 @@
         }
       }
     }
-    .users {
+    .user {
       position: relative;
       grid-area: user;
       height: 530px;
       background: #fff;
       border-radius: 10px;
       box-shadow: $shadow-1;
-      @media (max-width: 1232px) {
-        display: none;
-      }
-      &__header {
-      }
-      &__container {
+      &__container{
         padding: 1rem;
       }
       &__infos {
@@ -205,9 +200,9 @@
         flex-direction: column;
         align-items: center;
         img {
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
+          width: 80px;
+          height: 80px;
+          //object-fit: cover;
           border-radius: 50%;
           box-shadow: $shadow-1;
         }
@@ -237,12 +232,12 @@
         }
       }
       &__links {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 1rem;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         li {
           width: 50px;
           height: 50px;
@@ -275,6 +270,12 @@
           }
         }
       }
+      // @media (max-width: 1232px) {
+      //   display: none;
+      // }
+     
+      
+      
       &__footer {
         position: absolute;
         bottom: 0;
