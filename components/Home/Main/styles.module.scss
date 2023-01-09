@@ -188,6 +188,9 @@
       background: #fff;
       border-radius: 10px;
       box-shadow: $shadow-1;
+      @media (max-width: 1232px) {
+        display: none;
+      }
       &__container{
         padding: 1rem;
       }
