@@ -17,8 +17,11 @@ import {
 } from "../data/home";
 import { useMediaQuery } from "react-responsive";
 import ProductsSwiper from "../components/ProductsSwiper";
+import { connectDB } from "../utils/db";
+import Product from "../models/Product";
 
-export default function Home({ country }) {
+export default function Home({ country, products }) {
+  console.log(products);
   const isMedium = useMediaQuery({ query: "(max-width:850px)" });
   const isMobile = useMediaQuery({ query: "(max-width:550px)" });
 
@@ -76,6 +79,8 @@ export default function Home({ country }) {
 }
 
 export async function getServerSideProps() {
+  connectDB();
+  let products = await Product.find().sort({ createdAt: -1 }).lean();
   let data = await axios
     .get("https://api.ipregistry.co/?key=5rouiffj7gcdpizd")
     .then((res) => {
@@ -85,6 +90,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
+      products: JSON.parse(JSON.stringify(products)),
       // country: { name: data.name, flag: data.flag.emojitwo },
       country: {
         name: "United Kingdom",
