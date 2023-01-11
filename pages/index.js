@@ -10,8 +10,6 @@ import FlashDeals from "../components/Home/FlashDeals";
 export default function Home({ country }) {
   const { data: session } = useSession();
 
-  console.log(session);
-
   return (
     <>
       <Header country={country} />

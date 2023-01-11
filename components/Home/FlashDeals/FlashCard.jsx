@@ -3,7 +3,6 @@ import styles from "./styles.module.scss";
 import { MdFlashOn } from "react-icons/md";
 
 const FlashCard = ({ product }) => {
-  console.log(product);
   return (
     <div className={styles.card}>
       <div className={styles.card__img}>
