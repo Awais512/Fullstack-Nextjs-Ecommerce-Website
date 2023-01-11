@@ -8,6 +8,8 @@ import Main from "../components/Home/Main";
 import FlashDeals from "../components/Home/FlashDeals";
 import Category from "../components/Home/Category";
 import {
+  gamingSwiper,
+  homeImprovSwiper,
   women_accessories,
   women_dresses,
   women_shoes,
@@ -56,6 +58,16 @@ export default function Home({ country }) {
             />
           </div>
           <ProductsSwiper products={women_swiper} />
+          <ProductsSwiper
+            products={gamingSwiper}
+            header="For Gamers"
+            bg="#2f82ff"
+          />
+          <ProductsSwiper
+            products={homeImprovSwiper}
+            header="Home Improvements"
+            bg="#5a31f4"
+          />
         </div>
       </div>
       <Footer country={country} />

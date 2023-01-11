@@ -9,10 +9,17 @@ import "swiper/css/pagination";
 // import required modules
 import { Navigation } from "swiper";
 
-const ProductsSwiper = ({ header, products }) => {
+const ProductsSwiper = ({ header, products, bg }) => {
   return (
     <div className={styles.wrapper}>
-      {header && <div className={styles.header}>{header}</div>}
+      {header && (
+        <div
+          className={styles.header}
+          style={{ background: `${bg ? bg : ""}` }}
+        >
+          {header}
+        </div>
+      )}
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -49,7 +56,7 @@ const ProductsSwiper = ({ header, products }) => {
                     ? `${product.name.slice(0, 30)}...`
                     : product.name}
                 </h1>
-                <span>${product.price}</span>
+                {product.price && <span>${product.price}</span>}
               </div>
             </div>
           </SwiperSlide>
