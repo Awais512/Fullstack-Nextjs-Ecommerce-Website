@@ -7,8 +7,14 @@ import { useSession } from "next-auth/react";
 import Main from "../components/Home/Main";
 import FlashDeals from "../components/Home/FlashDeals";
 import Category from "../components/Home/Category";
-import { women_accessories, women_dresses, women_shoes } from "../data/home";
+import {
+  women_accessories,
+  women_dresses,
+  women_shoes,
+  women_swiper,
+} from "../data/home";
 import { useMediaQuery } from "react-responsive";
+import ProductsSwiper from "../components/ProductsSwiper";
 
 export default function Home({ country }) {
   const isMedium = useMediaQuery({ query: "(max-width:850px)" });
@@ -49,6 +55,7 @@ export default function Home({ country }) {
               background="#000"
             />
           </div>
+          <ProductsSwiper products={women_swiper} />
         </div>
       </div>
       <Footer country={country} />

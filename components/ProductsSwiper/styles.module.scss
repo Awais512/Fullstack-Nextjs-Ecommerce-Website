@@ -1,0 +1,30 @@
+@import '../../styles/base.scss';
+
+.wrapper{
+    margin-top: 1rem;
+    .product{
+        
+        &__img{
+            height: 350px;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        &__infos{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2px;
+            h1{
+                font-size: 13px;
+                font-weight: normal;
+                color:#222;
+            }
+            span{
+                color:$redish-color;
+            }
+        }
+    }
+}
