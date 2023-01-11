@@ -1,8 +1,10 @@
 import styles from "./styles.module.scss";
 import { BsArrowRightCircle } from "react-icons/bs";
+import { useMediaQuery } from "react-responsive";
 
 const Category = ({ header, products, background }) => {
-  console.log(products);
+  const isMedium = useMediaQuery({ query: "(max-width:1300px)" });
+  const isMobile = useMediaQuery({ query: "(max-width:550px)" });
 
   return (
     <div className={styles.category} style={{ background: `${background}` }}>
@@ -11,7 +13,7 @@ const Category = ({ header, products, background }) => {
         <BsArrowRightCircle />
       </div>
       <div className={styles.category__products}>
-        {products.map((product) => (
+        {products.slice(0, isMobile ? 6 : isMedium ? 4 : 6).map((product) => (
           <div key={product.price} className={styles.product}>
             <img src={product.image} alt="" />
           </div>
