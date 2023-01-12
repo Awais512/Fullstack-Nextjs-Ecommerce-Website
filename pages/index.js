@@ -60,16 +60,20 @@ export default function Home({ country, products }) {
               background="#000"
             />
           </div>
-          <ProductsSwiper products={women_swiper} />
+          <ProductsSwiper
+            products={women_swiper}
+            header="For Women"
+            bg="#5d246e"
+          />
           <ProductsSwiper
             products={gamingSwiper}
             header="For Gamers"
-            bg="#2f82ff"
+            bg="#071e26"
           />
           <ProductsSwiper
             products={homeImprovSwiper}
             header="Home Improvements"
-            bg="#5a31f4"
+            bg="#272c7f"
           />
         </div>
       </div>
