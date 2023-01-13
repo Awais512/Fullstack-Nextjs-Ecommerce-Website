@@ -19,9 +19,9 @@ import { useMediaQuery } from "react-responsive";
 import ProductsSwiper from "../components/ProductsSwiper";
 import { connectDB } from "../utils/db";
 import Product from "../models/Product";
+import ProductCard from "../components/ProductCard";
 
 export default function Home({ country, products }) {
-  console.log(products);
   const isMedium = useMediaQuery({ query: "(max-width:850px)" });
   const isMobile = useMediaQuery({ query: "(max-width:550px)" });
 
@@ -75,6 +75,11 @@ export default function Home({ country, products }) {
             header="Home Improvements"
             bg="#272c7f"
           />
+          <div className={styles.product}>
+            {products.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
         </div>
       </div>
       <Footer country={country} />
