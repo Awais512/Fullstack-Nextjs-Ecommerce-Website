@@ -1,2 +1,17 @@
 @import '../../styles/base.scss';
 
+.product{
+    position: relative;
+    width: 290px;
+    height: 500px;
+}
+
+.swiper{
+    position: relative;
+    cursor: pointer;
+    background: #fff;
+    img{
+        height: 390px;
+        display: block;
+    }
+}

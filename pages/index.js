@@ -75,7 +75,7 @@ export default function Home({ country, products }) {
             header="Home Improvements"
             bg="#272c7f"
           />
-          <div className={styles.product}>
+          <div className={styles.products}>
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

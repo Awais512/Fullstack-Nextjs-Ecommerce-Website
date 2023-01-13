@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
+import Link from "next/link";
+import ProductSwiper from "./ProductSwiper";
 
 const ProductCard = ({ product }) => {
   const [active, setActive] = useState(0);
@@ -32,9 +34,17 @@ const ProductCard = ({ product }) => {
     );
   }, [active]);
 
-  console.log(images, prices, styless);
-
-  return <div>ProductCard</div>;
+  return (
+    <div className={styles.product}>
+      <div className={styles.product__container}>
+        <Link href={`/product/${product.slug}?styles=${active}`} legacyBehavior>
+          <div>
+            <ProductSwiper images={images} />
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default ProductCard;
