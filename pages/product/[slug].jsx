@@ -1,10 +1,32 @@
 import styles from "./product.module.scss";
 import { connectDB, disconnectDB } from "../../utils/db";
 import Product from "../../models/Product";
+import Head from "next/head";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Category from "../../models/Category";
+import SubCategory from "../../models/SubCategory";
 
-const ProductDetails = ({ newProduct }) => {
-  console.log(newProduct);
-  return <div>ProductDetails</div>;
+const ProductDetails = ({ product }) => {
+  return (
+    <>
+      <Head>
+        <title>{product.name}</title>
+      </Head>
+      <Header country="" />
+      <div className={styles.product}>
+        <div className={styles.container}>
+          <div className={styles.path}>
+            Home / {product.category.name}
+            {product.subCategories.map((sub) => (
+              <span key={sub._id}>/{sub.name}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* <Footer /> */}
+    </>
+  );
 };
 
 export async function getServerSideProps(context) {
@@ -14,7 +36,10 @@ export async function getServerSideProps(context) {
   const size = query.size || 0;
   connectDB();
   //---------//
-  let product = await Product.findOne({ slug }).lean();
+  let product = await Product.findOne({ slug })
+    .populate({ path: "category", model: Category })
+    .populate({ path: "subCategories._id", model: SubCategory })
+    .lean();
   let subProduct = product.subProducts[style];
   let prices = subProduct.sizes
     .map((s) => {
@@ -50,7 +75,7 @@ export async function getServerSideProps(context) {
   disconnectDB();
   return {
     props: {
-      newProduct: JSON.parse(JSON.stringify(newProduct)),
+      product: JSON.parse(JSON.stringify(newProduct)),
     },
   };
 }
