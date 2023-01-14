@@ -93,6 +93,7 @@ const productSchema = new mongoose.Schema(
     },
     subProducts: [
       {
+        sku: String,
         images: [],
         description_images: [],
         color: {
