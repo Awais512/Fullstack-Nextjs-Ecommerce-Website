@@ -39,15 +39,15 @@ const ProductCard = ({ product }) => {
   return (
     <div className={styles.product}>
       <div className={styles.product__container}>
-        <a
+        <Link
           href={`/product/${product.slug}?style=${active}`}
-          target="_blank"
-          rel="noreferrer"
+          // target="_blank"
+          // rel="noreferrer"
         >
           <div>
             <ProductSwiper images={images} />
           </div>
-        </a>
+        </Link>
         {product.subProducts[active].discount ? (
           <div className={styles.product__discount}>
             -{product.subProducts[active].discount}%

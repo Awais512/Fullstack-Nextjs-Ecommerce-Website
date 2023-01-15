@@ -6,8 +6,11 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Category from "../../models/Category";
 import SubCategory from "../../models/SubCategory";
+import MainSwiper from "../../components/ProductPage/MainSwiper";
+import { useState } from "react";
 
 const ProductDetails = ({ product }) => {
+  const [activeImg, setActiveImg] = useState("");
   return (
     <>
       <Head>
@@ -21,6 +24,10 @@ const ProductDetails = ({ product }) => {
             {product.subCategories.map((sub) => (
               <span key={sub._id}>/{sub.name}</span>
             ))}
+          </div>
+          <div className={styles.product__main}>
+            <MainSwiper images={product.images} activeImg={activeImg} />
+            <div></div>
           </div>
         </div>
       </div>
