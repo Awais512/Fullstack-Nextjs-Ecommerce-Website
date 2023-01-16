@@ -8,6 +8,7 @@ import Category from "../../models/Category";
 import SubCategory from "../../models/SubCategory";
 import MainSwiper from "../../components/ProductPage/MainSwiper";
 import { useState } from "react";
+import Infos from "../../components/ProductPage/Infos";
 
 const ProductDetails = ({ product }) => {
   const [activeImg, setActiveImg] = useState("");
@@ -27,7 +28,7 @@ const ProductDetails = ({ product }) => {
           </div>
           <div className={styles.product__main}>
             <MainSwiper images={product.images} activeImg={activeImg} />
-            <div></div>
+            <Infos product={product} setActiveImg={setActiveImg} />
           </div>
         </div>
       </div>
