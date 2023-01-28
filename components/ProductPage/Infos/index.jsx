@@ -1,14 +1,30 @@
 import styles from "./styles.module.scss";
 import { Rating } from "@mui/material";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { TbMinus, TbPlus } from "react-icons/tb";
+import { BsHandbagFill, BsHeart } from "react-icons/bs";
 
-const Infos = ({ product }) => {
+const Infos = ({ product, setActiveImg }) => {
   console.log(product);
   const router = useRouter();
 
   const [size, setSize] = useState(router.query.size);
+  const [qty, setQty] = useState(1);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    setSize("");
+    setQty(1);
+  }, [router.query.style]);
+
+  useEffect(() => {
+    if (qty > product.quantity) {
+      setQty(product.quantity);
+    }
+  }, [router.query.size]);
 
   return (
     <div className={styles.infos}>
@@ -68,6 +84,49 @@ const Infos = ({ product }) => {
             ))}
           </div>
         </div>
+        <div className={styles.infos__colors}>
+          {product.colors &&
+            product.colors.map((color, i) => (
+              <span
+                key={i}
+                className={i == router.query.style ? styles.active_color : ""}
+                onMouseOver={() =>
+                  setActiveImg(product.subProducts[i].images[0].url)
+                }
+                onMouseLeave={() => setActiveImg("")}
+              >
+                <Link href={`/product/${product.slug}?style=${i}`}>
+                  <img src={color.image} alt="" />
+                </Link>
+              </span>
+            ))}
+        </div>
+        <div className={styles.infos__qty}>
+          <button onClick={() => qty > 1 && setQty((prev) => prev - 1)}>
+            <TbMinus />
+          </button>
+          <span>{qty}</span>
+          <button
+            onClick={() => qty < product.quantity && setQty((prev) => prev + 1)}
+          >
+            <TbPlus />
+          </button>
+        </div>
+        <div className={styles.infos__actions}>
+          <button
+            disabled={product.quantity < 1}
+            style={{ cursor: `${product.quantity < 1 ? "not-allowed" : ""}` }}
+          >
+            <BsHandbagFill />
+            <b>ADD TO CART</b>
+          </button>
+          <button>
+            <BsHeart />
+            WISHLIST
+          </button>
+        </div>
+        {error && <span className={styles.error}>{error}</span>}
+        {success && <span className={styles.success}>{success}</span>}
       </div>
     </div>
   );
