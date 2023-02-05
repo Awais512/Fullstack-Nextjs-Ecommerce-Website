@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { TbMinus, TbPlus } from "react-icons/tb";
 import { BsHandbagFill, BsHeart } from "react-icons/bs";
+import Share from "../Share";
 
 const Infos = ({ product, setActiveImg }) => {
   console.log(product);
@@ -125,6 +126,7 @@ const Infos = ({ product, setActiveImg }) => {
             WISHLIST
           </button>
         </div>
+        <Share />
         {error && <span className={styles.error}>{error}</span>}
         {success && <span className={styles.success}>{success}</span>}
       </div>
