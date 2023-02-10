@@ -19,7 +19,7 @@ const ProductDetails = ({ product }) => {
       </Head>
       <Header country="" />
       <div className={styles.product}>
-        <div className={styles.container}>
+        <div className={styles.product__container}>
           <div className={styles.path}>
             Home / {product.category.name}
             {product.subCategories.map((sub) => (

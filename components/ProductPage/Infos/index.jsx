@@ -7,6 +7,7 @@ import { TbMinus, TbPlus } from "react-icons/tb";
 import { BsHandbagFill, BsHeart } from "react-icons/bs";
 import Share from "../Share";
 import Accordian from "../Accordian";
+import SimilarSwiper from "./SimilarSwiper";
 
 const Infos = ({ product, setActiveImg }) => {
   console.log(product);
@@ -129,6 +130,7 @@ const Infos = ({ product, setActiveImg }) => {
         </div>
         <Share />
         <Accordian details={[product.description, ...product.details]} />
+        <SimilarSwiper />
         {error && <span className={styles.error}>{error}</span>}
         {success && <span className={styles.success}>{success}</span>}
       </div>
